@@ -187,9 +187,9 @@ if (!isset($_SESSION['username'])) {
                         <label for="responsavel" class="form-label">Responsável</label>
                         <select class="form-control" id="responsavel" name="responsavel" required>
                             <option value="" disabled selected>Selecione uma opção</option>
-                            <option value="procempa">Procempa</option>
-                            <option value="radiante">Radiante</option>
-                            <option value="icp">ICP</option>
+                            <option value="empresa1">Empresa 1</option>
+                            <option value="empresa2">Empresa 2</option>
+                            <option value="empresa3">empresa3</option>
                             <option value="resolvido">Resolvido</option>
                         </select>
                     </div>
