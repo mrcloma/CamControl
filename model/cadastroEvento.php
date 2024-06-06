@@ -6,10 +6,13 @@ class Cadastro extends Evento {
     private $evento;
     private $camera_id;
     private $it2m;
+    private $fman;
+    private $vmanut;
     private $data_abertura;
     private $data_fechamento;
     private $responsavel;
-    private $descricao;
+    private $problema;
+    private $acao;
 
     // Métodos Set
     public function setEvento($string){
@@ -22,6 +25,14 @@ class Cadastro extends Evento {
 
     public function setIt2m($int){
         $this->it2m = $int;
+    }
+
+    public function setFman($string){
+        $this->fman = $string;
+    }
+
+    public function setVmanut($string){
+        $this->vmanut = $string;
     }
 
     public function setDataAbertura($date){
@@ -44,8 +55,12 @@ class Cadastro extends Evento {
         $this->responsavel = $string;
     }
 
-    public function setDescricao($string){
-        $this->descricao = $string;
+    public function setProblema($string){
+        $this->problema = $string;
+    }
+
+    public function setAcao($string){
+        $this->acao = $string;
     }
 
     public function getEvento(){
@@ -60,6 +75,14 @@ class Cadastro extends Evento {
         return $this->it2m;
     }
 
+    public function getFman(){
+        return $this->fman;
+    }
+
+    public function getVmanut(){
+        return $this->vmanut;
+    }
+
     public function getDataAbertura(){
         return $this->data_abertura;
     }
@@ -72,8 +95,12 @@ class Cadastro extends Evento {
         return $this->responsavel;
     }
 
-    public function getDescricao(){
-        return $this->descricao;
+    public function getProblema(){
+        return $this->problema;
+    }
+
+    public function getAcao(){
+        return $this->acao;
     }
 
     public function incluir(){
@@ -81,10 +108,13 @@ class Cadastro extends Evento {
             $this->getEvento(),
             $this->getCameraId(),
             $this->getIt2m(),
+            $this->getFman(),
+            $this->getVmanut(),
             $this->getDataAbertura(),
             $this->getDataFechamento(),
             $this->getResponsavel(),
-            $this->getDescricao(),
+            $this->getProblema(),
+            $this->getAcao(),
         );
     }
 }

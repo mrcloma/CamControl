@@ -13,9 +13,9 @@ class Evento{
         $this->mysqli = new mysqli(BD_SERVIDOR, BD_USUARIO, BD_SENHA, BD_BANCO);
     }
 
-    public function setEventoBD($evento, $camera_id, $it2m, $data_abertura, $data_fechamento, $responsavel, $descricao){
-        $stmt = $this->mysqli->prepare("INSERT INTO registros (`evento`, `camera_id`, `it2m`, `data_abertura`, `data_fechamento`, `responsavel`, `descricao`) VALUES (?,?,?,?,?,?,?)");
-        $stmt->bind_param("siissss", $evento, $camera_id, $it2m, $data_abertura, $data_fechamento, $responsavel, $descricao);
+    public function setEventoBD($evento, $camera_id, $it2m, $fman, $vmanut, $data_abertura, $data_fechamento, $responsavel, $problema, $acao){
+        $stmt = $this->mysqli->prepare("INSERT INTO registros (`evento`, `camera_id`, `it2m`, `fman`, `vmanut`, `data_abertura`, `data_fechamento`, `responsavel`, `problema`, `acao`) VALUES (?,?,?,?,?,?,?,?,?,?)");
+        $stmt->bind_param("siisssssss", $evento, $camera_id, $it2m, $fman, $vmanut, $data_abertura, $data_fechamento, $responsavel, $problema, $acao);
 
         if ($stmt->execute() == TRUE) {
             return true;
@@ -42,10 +42,12 @@ class Evento{
     }
 
     public function getEventoPaginado($camera_id, $itensPorPagina, $offset) {
-        $stmt = $this->mysqli->prepare("SELECT * FROM registros WHERE camera_id = ? LIMIT ? OFFSET ?");
+        $stmt = $this->mysqli->prepare("SELECT * FROM registros WHERE camera_id = ? ORDER BY  id  DESC LIMIT ? OFFSET ?");
         $stmt->bind_param("sii", $camera_id, $itensPorPagina, $offset);
         $stmt->execute();
         $result = $stmt->get_result();
+
+        $array = array();
 
         while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
             $array[] = $row;

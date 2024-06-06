@@ -56,12 +56,17 @@ class Usuario {
     }
 
     public function validarCredenciais($username, $password){
-        $result = $this->mysqli->prepare("SELECT * FROM users WHERE `username` = ? AND `password` = ?");
-        $result->bind_param("ss", $username, $password);
+        $result = $this->mysqli->prepare("SELECT password FROM users WHERE username = ?");
+        $result->bind_param("s", $username);
         $result->execute();
-        $user = $result->get_result()->fetch_assoc();
+        $result->bind_result($hashedPassword);
+        $result->fetch();
 
-        return ($user !== null); // Retorna true se o usuário foi encontrado, senão retorna false
+        if ($hashedPassword && password_verify($password, $hashedPassword)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 ?>
