@@ -1,5 +1,4 @@
 <?php
-//arquivo temporario para inserir usuarios, caso fosse utilizado em prod deveria haver uma implementacao completa
 $dsn = 'mysql:host=localhost;dbname=camcontrol';
 $dbUsername = 'camuser';
 $dbPassword = 'senha123';
