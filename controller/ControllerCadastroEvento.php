@@ -13,10 +13,13 @@ class cadastroController{
         $this->cadastro->setEvento($_POST['evento']);
         $this->cadastro->setCameraId($_POST['camera_id']);
         $this->cadastro->setIt2m($_POST['it2m']);
+        $this->cadastro->setFman($_POST['fman']);
+        $this->cadastro->setVmanut($_POST['vmanut']);
         $this->cadastro->setDataAbertura($_POST['data_abertura']);
         $this->cadastro->setDataFechamento($_POST['data_fechamento']);
         $this->cadastro->setResponsavel($_POST['responsavel']);
-        $this->cadastro->setDescricao($_POST['descricao']);
+        $this->cadastro->setProblema($_POST['problema']);
+        $this->cadastro->setAcao($_POST['acao']);
 
         $result = $this->cadastro->incluir();
 

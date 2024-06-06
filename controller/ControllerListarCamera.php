@@ -34,7 +34,7 @@ class ListarControllerCamera{
         echo "</form>";
 
 
-	echo "<table class='table w-100'>";
+	echo "<table style='table-layout: fixed;' class='table table-bordered w-100'>";
 	echo "<thead>";
 	echo "<tr>";
 	echo "<th><b>Nome</b></th>";
@@ -48,11 +48,11 @@ class ListarControllerCamera{
 	
 	foreach ($row as $value){
 	    echo "<tr>";
-	    echo "<td>".$value['nome']."</td>";
-	    echo "<td>".$value['cliente_nome']."</td>";
-	    echo "<td>".$value['endereco']."</td>";
-	    echo "<td>".$value['descricao']."</td>";
-	    echo "<td><a class='btn btn-warning' href='editarcamera.php?id=".$value['id']."'>Editar</a>&nbsp&nbsp<a class='btn btn-danger' href='../controller/ControllerDeletarCamera.php?id=".$value['id']."'>Excluir</a></td>";
+	    echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['nome']."'>".$value['nome']."</td>";
+	    echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['cliente_nome']."'>".$value['cliente_nome']."</td>";
+	    echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['endereco']."'>".$value['endereco']."</td>";
+	    echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['descricao']."'>".$value['descricao']."</td>";
+	    echo "<td class='text-center align-middle' style='white-space: nowrap;'><a class='btn btn-warning' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Editar' href='editarcamera.php?id=".$value['id']."'><i class='fas fa-pencil-alt'></i></a>&nbsp&nbsp<a class='btn btn-danger'  data-bs-toggle='tooltip' data-bs-placement='bottom' title='Remover'href='../controller/ControllerDeletarCamera.php?id=".$value['id']."'><i class='fas fa-trash-alt'></i></a></td>";
 	    echo "</tr>";
 	}
 	

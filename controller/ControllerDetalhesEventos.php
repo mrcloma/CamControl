@@ -1,4 +1,4 @@
-<?php
+e<?php
 require_once("../model/evento.php");
 
 class ListarControllerHistorico {
@@ -15,7 +15,7 @@ class ListarControllerHistorico {
     private function criarTabela() {
         $row = $this->lista->getEventoBD($this->id);
 	
-        echo "<table class='table w-100'>";
+        echo "<table style='table-layout: fixed;' class='table table-bordered w-100'>";
         echo "<tbody>";
 
         foreach ($row as $value) {
@@ -32,6 +32,14 @@ class ListarControllerHistorico {
             echo "<td>" . $value['it2m'] . "</td>";
             echo "</tr>";
             echo "<tr>";
+            echo "<th>FMAN: </th>";
+            echo "<td>" . $value['fman'] . "</td>";
+            echo "</tr>";
+            echo "<tr>";
+            echo "<th>VMANUT: </th>";
+            echo "<td>" . $value['vmanut'] . "</td>";
+            echo "</tr>";
+            echo "<tr>";
             echo "<th>Data de abertura: </th>";
             echo "<td>" . $value['data_abertura'] . "</td>";
             echo "</tr>";
@@ -44,8 +52,11 @@ class ListarControllerHistorico {
             echo "<td>" . $value['responsavel'] . "</td>";
             echo "<tr>";
             echo "</tr>";
-            echo "<th>Descrição: </th>";
-            echo "<td>" . $value['descricao'] . "</td>";
+            echo "<th>Problema: </th>";
+            echo "<td>" . $value['problema'] . "</td>";
+            echo "</tr>";
+            echo "<th>Ação: </th>";
+            echo "<td>" . $value['acao'] . "</td>";
             echo "</tr>";
         }
 

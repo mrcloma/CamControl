@@ -33,7 +33,7 @@ class ListarControllerCamera{
         echo "</form>";
 
 
-        echo "</br><table class='table w-100'>";
+        echo "</br><table style='table-layout: fixed;' class='table table-bordered w-100'>";
         echo "<thead>";
         echo "<tr>";
 	echo "<th><b>Status</b></th>";
@@ -47,17 +47,17 @@ class ListarControllerCamera{
 
         foreach ($row as $value){
             echo "<tr>";
-            echo "<td>";
+            echo "<td class='text-truncate text-center align-middle'>";
             if ($value['status'] == 1) {
                 echo '<span class="badge bg-success">OK</span>';
             } else {
                 echo '<span class="badge bg-danger">PENDENTE</span>';
             }
             echo "</td>";
-            echo "<td>".$value['nome']."</td>";
-            echo "<td>".$value['cliente_nome']."</td>";
-            echo "<td>".$value['descricao']."</td>";
-            echo "<td><a class='btn btn-warning' href='registroseventos.php?id=".$value['id']."&pagina=1'>Histórico</a></td>";
+            echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['nome']."'>".$value['nome']."</td>";
+            echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['cliente_nome']."'>".$value['cliente_nome']."</td>";
+            echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['descricao']."'>".$value['descricao']."</td>";
+            echo "<td class='text-truncate text-center align-middle'><a class='btn btn-warning' href='registroseventos.php?id=".$value['id']."&pagina=1'>Histórico</a></td>";
             echo "</tr>";
         }
 

@@ -33,7 +33,7 @@ class ListarControllerStatus{
         echo "</br><button type='submit' class='btn btn-primary'>Pesquisar</button>";
         echo "</form>";
 
-        echo "</br><table class='table'>";
+        echo "</br><table style='table-layout: fixed;' class='table table-bordered w-100'>";
         echo "<thead>";
         echo "<tr>";
         echo "<th><b>Status</b></th>";
@@ -47,17 +47,17 @@ class ListarControllerStatus{
 
         foreach ($row as $value){
             echo "<tr>";
-            echo "<td>";
+            echo "<td class='text-truncate text-center align-middle'>";
             if ($value['status'] == 1) {
                 echo '<span class="badge bg-success">OK</span>';
             } else {
                 echo '<span class="badge bg-danger">PENDENTE</span>';
             }
             echo "</td>";
-            echo "<td>".$value['nome']."</td>";
-            echo "<td>".$value['cliente_nome']."</td>";
-            echo "<td>".$value['descricao']."</td>";
-            echo "<td><a class='btn btn-warning' href='alterarstatus.php?id=".$value['id']."'>Alterar Status</a></td>";
+            echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['nome']."'>".$value['nome']."</td>";
+            echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['cliente_nome']."'>".$value['cliente_nome']."</td>";
+            echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['descricao']."'>".$value['descricao']."</td>";
+            echo "<td class='text-truncate text-center align-middle'><a class='btn btn-warning' href='alterarstatus.php?id=".$value['id']."'>Alterar Status</a></td>";
             echo "</tr>";
         }
 

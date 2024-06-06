@@ -25,7 +25,7 @@ class editarCameraController {
 
     public function editarFormularioCamera2($nome, $cliente_nome, $status){
         if ($this->editar->updateCamera2($nome, $cliente_nome, $status, $this->id) == TRUE){
-            echo "<script>alert('Status alterado com sucesso!');document.location='../view/cadastroregistro.php?id=".$this->getId()."'</script>";
+            echo "<script>alert('Status alterado com sucesso! Cadastre agora o motivo da alteração de Status.');document.location='../view/cadastroregistro.php?id=".$this->getId()."'</script>";
         } else {
             echo "<script>alert('Erro ao alterar status!');history.back()</script>";
         }

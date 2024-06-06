@@ -23,12 +23,14 @@ class ListarControllerHistorico {
         // Obtém os dados da página atual do banco de dados
         $row = $this->lista->getEventoPaginado($this->camera_id, $this->itensPorPagina, $offset);
 	
-        echo "<table class='table w-100'>";
+        echo "<table style='table-layout: fixed;' class='table table-bordered w-100'>";
         echo "<thead>";
         echo "<tr>";
         echo "<th>Evento</th>";
         echo "<th>Inserção</th>";
         echo "<th>IT2M</th>";
+        echo "<th>FMAN</th>";
+        echo "<th>VMANUT</th>";
         echo "<th>Abertura</th>";
         echo "<th>Fechamento</th>";
         echo "<th>Responsável</th>";
@@ -39,14 +41,19 @@ class ListarControllerHistorico {
 
         foreach ($row as $value) {
             echo "<tr>";
-            echo "<td>" . $value['evento'] . "</td>";
-            echo "<td>" . $value['data_registro'] . "</td>";
-            echo "<td>" . $value['it2m'] . "</td>";
-            echo "<td>" . $value['data_abertura'] . "</td>";
-            echo "<td>" . $value['data_fechamento'] . "</td>";
-            echo "<td>" . $value['responsavel'] . "</td>";
-            echo "<td><a class='btn btn-warning'  href='../view/detalheseventos.php?id=" . $value['id'] . "'>Detalhes</a>&nbsp&nbsp<a class='btn btn-danger' href='../controller/ControllerDeletarEvento.php?id=" . $value['id'] . "'>Excluir</a></td>";
-            echo "</tr>";
+            echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['evento']."'>" . $value['evento'] . "</td>";
+            echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['data_registro']."'>" . $value['data_registro'] . "</td>";
+            echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['it2m']."'>" . $value['it2m'] . "</td>";
+           echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['fman']."'>" . $value['fman'] . "</td>";
+           echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['vmanut']."'>" . $value['vmanut'] . "</td>";
+            echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['data_abertura']."'>" . $value['data_abertura'] . "</td>";
+            echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['data_fechamento']."'>" . $value['data_fechamento'] . "</td>";
+            echo "<td class='text-truncate' data-bs-toggle='tooltip' data-bs-placement='bottom' title='".$value['responsavel']."'>" . $value['responsavel'] . "</td>";
+            echo "<td class='text-center align-middle' style='white-space: nowrap;'>
+        <a class='btn btn-warning' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Detalhes' href='../view/detalheseventos.php?id=" . $value['id'] . "'><i class='fas fa-list'></i></a>
+        <a class='btn btn-danger' data-bs-toggle='tooltip' data-bs-placement='bottom' title='Remover' href='../controller/ControllerDeletarEvento.php?id=" . $value['id'] . "'><i class='fas fa-trash-alt'></i></a>
+      </td>";
+           echo "</tr>";
         }
 
         echo "</tbody></table>";
@@ -66,7 +73,7 @@ class ListarControllerHistorico {
         
             if (!empty($itensNaPagina)) {
                 echo "<li class='page-item " . ($i == $paginaAtual ? 'active' : '') . "'><a class='page-link' href='registroseventos.php?id=" . $this->camera_id . "&pagina=" . $i . "'>" . $i . "</a></li>";
-            }
+	            }
         }
 
         echo "</ul>";

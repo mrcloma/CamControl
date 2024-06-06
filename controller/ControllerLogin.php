@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($usuario->validarCredenciais($username, $password)) {
         // Autenticação bem-sucedida, redirecione para a página desejada
         $_SESSION['username'] = $username;
-        header("Location: ../view/camera.php");
+        header("Location: ../view/status.php");
         exit();
     } else {
         echo "<script>alert('Usuário ou senha incorretos.');history.back()</script>";
