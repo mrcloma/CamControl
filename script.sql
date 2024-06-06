@@ -23,9 +23,12 @@ CREATE TABLE registros (
     camera_id INT,
     data_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     it2m INT,
+    fman TEXT,
+    vmanut TEXT,
     data_abertura DATE,
     data_fechamento DATE,
     responsavel TEXT,
-    descricao TEXT,
+    problema TEXT,
+    acao TEXT,
     FOREIGN KEY (camera_id) REFERENCES cameras(id) ON DELETE CASCADE
 );
