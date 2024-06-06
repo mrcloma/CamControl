@@ -7,7 +7,7 @@ if (!isset($_SESSION['username'])) {
     exit();
 }
 ?>
-<?php require_once("../controller/ControllerDetalhesEventos.php");?>
+<?php require_once("../controller/ControllerDetalhesRelatorio.php");?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -138,7 +138,8 @@ if (!isset($_SESSION['username'])) {
 		<h5 class="card-title">Detalhes do Evento</h5>
 		<?php   
 			$camera_id = $_GET['id']; // ou qualquer outra forma de obter o valor
-                        $controller = new listarControllerHistorico($camera_id);
+                        $controller = new listarControllerRelatorio($camera_id);
+                        //$controller = new listarControllerRelatorio();
                 ?>
             </div>
           </div>

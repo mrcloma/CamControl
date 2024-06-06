@@ -6,8 +6,9 @@ if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit();
 }
+require_once("../controller/ControllerRelatorioResumido.php");
 ?>
-<?php require_once("../controller/ControllerDetalhesEventos.php");?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +16,7 @@ if (!isset($_SESSION['username'])) {
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Registros</title>
+  <title>Relatório Resumido</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -35,6 +36,7 @@ if (!isset($_SESSION['username'])) {
   <link href="../assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="../assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="../assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="../assets/css/style.css" rel="stylesheet">
@@ -126,20 +128,19 @@ if (!isset($_SESSION['username'])) {
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Eventos de Câmera</h1>
+      <h1>Relatório Resumido</h1>
     </div><!-- End Page Title -->
-
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
 
           <div class="card">
             <div class="card-body">
-		<h5 class="card-title">Detalhes do Evento</h5>
-		<?php   
-			$camera_id = $_GET['id']; // ou qualquer outra forma de obter o valor
-                        $controller = new listarControllerHistorico($camera_id);
-                ?>
+            <!-- Table with stripped rows -->
+                 <?php new listarRelatorioResumido();  ?>
+
+            <!-- End Table with stripped rows -->
+
             </div>
           </div>
 
